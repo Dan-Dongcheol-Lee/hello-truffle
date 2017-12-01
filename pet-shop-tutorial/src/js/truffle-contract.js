@@ -483,6 +483,8 @@ var contract = (function(module) {
           }
         }
 
+        console.log('self.web3.version:', self.web3.version);
+
         self.web3.version.getNetwork(function(err, result) {
           if (err) return reject(err);
 

@@ -13,7 +13,8 @@ contract Adoption {
         return petId;
     }
 
-    function getAdopters() public returns (address[16]) {
+    // Retrieving the adopters
+    function getAdopters() public constant returns (address[16]) {
         return adopters;
     }
 }

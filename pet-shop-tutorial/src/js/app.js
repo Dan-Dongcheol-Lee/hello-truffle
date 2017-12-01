@@ -29,7 +29,7 @@ App = {
       App.web3Provider = web3.currentProvider;
     } else {
       // If no injected web3 instance is detected, fallback to the TestRPC
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:9545');
     }
     web3 = new Web3(App.web3Provider);
 
@@ -64,13 +64,8 @@ App = {
     App.contracts.Adoption.deployed().then(function(instance) {
       adoptionInstance = instance;
 
-      console.log('contract deployed(): ', adoptionInstance);
-    
       return adoptionInstance.getAdopters.call();
     }).then(function(adopters) {
-
-      console.log('contract deployed then(): ', adopters);
-
       for (i = 0; i < adopters.length; i++) {
         if (adopters[i] !== '0x0000000000000000000000000000000000000000') {
           $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
